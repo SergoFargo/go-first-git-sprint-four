@@ -105,10 +105,10 @@ const (
 // height float64 — рост пользователя.
 func WalkingSpentCalories(action int, duration, weight, height float64) float64 {
 	// ваш код здесь
-	if duration == 0 { // kmhInMsec
+	if duration == 0 {
 		return 0
 	}
-	walkingCalories := ((walkingCaloriesWeightMultiplier*weight + (math.Pow(meanSpeed(action, duration), 2)/height)*walkingSpeedHeightMultiplier*weight) * duration * minInH)
+	walkingCalories := ((walkingCaloriesWeightMultiplier*weight + (math.Pow((meanSpeed(action, duration)*(kmhInMsec/cmInM)), 2)/height)*walkingSpeedHeightMultiplier*weight) * duration * minInH)
 	return walkingCalories
 }
 
@@ -142,7 +142,7 @@ func swimmingMeanSpeed(lengthPool, countPool int, duration float64) float64 {
 // weight float64 — вес пользователя.
 func SwimmingSpentCalories(lengthPool, countPool int, duration, weight float64) float64 {
 	// ваш код здесь
-	if duration == 0 { // kmhInMsec
+	if duration == 0 {
 		return 0
 	}
 	swimmingCalories := (swimmingMeanSpeed(lengthPool, countPool, duration) + swimmingCaloriesMeanSpeedShift) * swimmingCaloriesWeightMultiplier * weight * duration
