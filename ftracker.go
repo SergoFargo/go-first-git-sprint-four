@@ -109,7 +109,7 @@ func WalkingSpentCalories(action int, duration, weight, height float64) float64 
 	meanSpeedInMS := meanSpeed(action, duration) * kmhInMsec // средняя скорость в м/с.
 	heightInM := height / cmInM                              // рост пользователя в метрах.
 
-	walkingCalories := walkingCaloriesWeightMultiplier*weight + ((math.Pow(meanSpeedInMS, 2)/heightInM)*walkingSpeedHeightMultiplier*weight)*duration*minInH
+	walkingCalories := (walkingCaloriesWeightMultiplier*weight + ((math.Pow(meanSpeedInMS, 2))/heightInM)*walkingSpeedHeightMultiplier*weight) * duration * minInH
 	return walkingCalories
 }
 
